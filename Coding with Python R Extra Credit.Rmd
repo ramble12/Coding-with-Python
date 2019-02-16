@@ -1,0 +1,114 @@
+---
+title: "Coding in Python with R Extra Credit"
+author: "ramble12"
+date: "February 14, 2019"
+output: html_document
+---
+
+##Part 3 - Conditionals
+###Task 10
+
+```{r}
+# chooses a number between 1 and 100
+x <- sample(1:100,1)
+print(x)
+# prints out random number and if-else statements say which quartile it is
+if(x <= 25) {
+    print("1st Quartile")
+} else if (x > 25 & x <= 50){
+  print("2nd Quartile")
+} else if (x > 50 & x <= 75){
+  print("3RD Quartile")
+} else if (x > 75 & x <= 100){
+  print("4th Quartile")
+}
+```
+
+## Part 4 - Loops
+### Task 11
+
+```{r}
+# list of cities
+list = list("Seattle", "Bellevue", "Tacoma", "Renton", "Kirkland", "Federal Way")
+# for loop and printing out statements for each city
+for (CITY in list){
+    cat("Warning, residents of ", CITY ,", temperatures will reach sub-zero temperatures today, please stay indoors if possible.\n", sep = '')
+}
+```
+
+
+### Task 12 
+
+
+```{r}
+# empty list
+list = list()
+# state list
+states = list("Washington", "California", "Nevada", "Idaho", "Montana", "Utah", "Colorado", "New Mexico")
+# adding state names into empty list
+# for loop and printing out shapefiles names for each state
+for (stateindex in states){
+  x = capture.output(cat("U://Users/Zhang/Geog_458/",stateindex,".shp\n", sep = ''))
+  list[stateindex]<- x
+}
+# giving out list 
+list
+```
+
+### Task 13
+
+```{r}
+# starts 10, till i is less than or equal to 0
+i <- 10
+while(i >= 0){
+  # COUNT is an variable and prints it out
+  COUNT = i
+  cat("T-minus",COUNT,"\n")
+  # subtracts by 1
+  i = i - 1
+}
+```
+
+## Part 5 - Functions
+### Task 14 
+
+```{r}
+# countdown function
+countdown <- function(x){
+    while(x >= 0){
+      # COUNT is an variable and prints it out
+      COUNT = x
+      cat("T-minus",COUNT, "\n")
+      # subtracts by 1
+      x = x - 1
+    }
+  }
+# chosen number
+countdown(7)
+```
+
+### Task 15
+
+
+```{r}
+# function for x value
+quartile_calc<- function(x){
+# if-else statements say which quartile it is
+  if(x <= 25){
+    print("1st Quartile")
+  }else if (x > 25 & x <= 50){
+    print("2nd Quartile")
+  }else if (x > 50 & x <= 75){
+    print("3rd Quartile")
+  }else if (x > 75 & x <= 100) {
+    print("4th Quartile")
+  } else {
+    stop("Number should be between 1 and 100, insert another one.")
+  }
+}
+# few sample numbers
+quartile_calc(14)
+quartile_calc(50)
+quartile_calc(80)
+# quartile_calc(101) -> gives error message
+```
